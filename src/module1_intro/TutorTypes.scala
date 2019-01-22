@@ -58,4 +58,7 @@ object TutorTypes extends App {
   // TODO define range as a range of values from 1 to 10, print it
   var range= 1 to 100
   println(s"Range ${range.filter(_ % 17 == 0).foreach(e => print(s"e-> ${e}; "))}")
+
+  val  sum = range.fold(0)(_+_)
+  println(s"Sum is ${sum.##}")
 }
