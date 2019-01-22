@@ -12,8 +12,11 @@ package luxoft.scala {
 }
 object Packages1 extends App {
   // TODO import only com.luxoft.scala.Inside1
-  // println(Inside1.test) // TODO uncomment
+  import com.luxoft.scala.Inside1
+   println(Inside1.test) // TODO uncomment
+
   // TODO import everything from com.luxoft.scala
-  // println(Outside1.test) // TODO uncomment
+  import com.luxoft.scala._
+   println(Outside1.test) // TODO uncomment
 }
 
