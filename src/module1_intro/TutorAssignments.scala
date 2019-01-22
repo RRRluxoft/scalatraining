@@ -24,4 +24,15 @@ object TutorAssignments extends App {
 
   val (min, max) = minMax(5, 10) // TODO uncomment and print the result
 
+  val str = "balll"
+  val b = str contains "a"
+
+  def isCont(inp: String)(implicit f: String => Boolean): Boolean = {
+//    inp contains(f)
+    f(inp)
+  }
+
+  val res = isCont("input")(_ contains("i"))
+  println(res)
+
 }

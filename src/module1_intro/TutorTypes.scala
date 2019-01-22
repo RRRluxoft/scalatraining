@@ -7,6 +7,7 @@ object TutorTypes extends App {
   //i++ // error: increment with ++ is illegal in Scala
   // TODO use += to increment i value
   // TODO use function call syntax to increment value, like i.+=
+  i.+=(1)
 
   var b:Byte = 22
   //b+=1 // error: not allowed - any operation returns Int
@@ -16,7 +17,7 @@ object TutorTypes extends App {
   d+=i
   println(d)
   println(Int.MaxValue+10) // -2147483639
-  var l:Long = 100;
+  var l:Long = 100
   l+=i
   println(l)
 
@@ -30,16 +31,24 @@ object TutorTypes extends App {
   a = "Hello"
   a=null
   */
+  var a: Any = 1.1
+  a = true
+  a = "Hello"
+  a=null
 
   //var av:AnyVal = "Hi" // error: String is reference, needs AnyRef
   // TODO define av as AnyRef so that it can be set to String
+  var av:AnyRef = "Hi"
 
   //var ar:AnyRef = 1 // error: 1 is a value, needs AnyVal
   // TODO define avc as AnyVal so that it can be set to value
+  var ar:AnyVal = 1
 
   // String
   // TODO use implicit apply to get first letter in "Hello"
   // println(c) // should print H
+  val c = "Hello"
+  println(s"Hello ${c(0)}")
 
   val s = "Hello World"
   // TODO use function contains to check if "o" is in the string
@@ -47,4 +56,6 @@ object TutorTypes extends App {
 
   // Range type
   // TODO define range as a range of values from 1 to 10, print it
+  var range= 1 to 100
+  println(s"Range ${range.filter(_ % 17 == 0).foreach(e => print(s"e-> ${e}; "))}")
 }
