@@ -5,7 +5,8 @@ object TutorExceptions extends App {
   def throwException(i: Int) =
     if (i < 0) throw new IllegalArgumentException()
 
-  throwException(-1)
+//  throwException(-1)
+
   // program will stop with
   // Exception in thread "main" java.lang.IllegalArgumentException
   // and stack trace
@@ -18,8 +19,8 @@ object TutorExceptions extends App {
 
   def testException(i: Int) = {
     if (i < 0) throw new IllegalArgumentException()
-    if (i<10) throw new CustomException("arg < 10")
-    if (i<20) throw new CustomCaseException("arg < 20")
+    if (i < 10) throw new CustomException("arg < 10")
+    if (i < 20) throw new CustomCaseException("arg < 20")
     println("no exception - normal execution")
   }
 
@@ -33,4 +34,20 @@ object TutorExceptions extends App {
   checkExceptions(15) // custom case exception with arg arg < 20
   checkExceptions(25) // no exception - normal execution
   */
+
+  def checkExceptions(i: Int) = {
+    try {
+      testException(i)
+    } catch {
+      case _: IllegalArgumentException => println("Wrong param")
+      case ex: CustomException => println(s"custom exception ${ex.getMessage}")
+      case CustomCaseException(msg) => println(s"Custom Case exception $msg")
+      case _: Throwable => println("Ane other Excption")
+    }
+  }
+
+//    checkExceptions(-5) // wrong parameter
+//    checkExceptions(5) // custom exception with arg arg < 10
+    checkExceptions(15) // custom case exception with arg arg < 20
+//  checkExceptions(25) // no exception - normal execution
 }
