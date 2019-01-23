@@ -2,11 +2,17 @@ package module4_traits
 
 // layered traits
 object TutorTraitsLayered extends App {
-  trait Logged { def log(msg: String) {} }
+
+  trait Logged {
+    def log(msg: String) {}
+  }
+
   class SavingsAccount
 
   trait ConsoleLogger extends Logged {
-    override def log(msg: String) { println(msg) }
+    override def log(msg: String) {
+      println(msg)
+    }
   }
 
   trait TimestampLogger extends Logged {
@@ -24,9 +30,9 @@ object TutorTraitsLayered extends App {
   }
 
   // TODO mix in TimestampLogger and ShortLogger to acct1
-  val acct1 = new SavingsAccount with ConsoleLogger
+  val acct1 = new SavingsAccount with ConsoleLogger with TimestampLogger with ShortLogger
   // TODO mix in ShortLogger and TimestampLogger to acct2
-  val acct2 = new SavingsAccount with ConsoleLogger
+  val acct2 = new SavingsAccount with ConsoleLogger with ShortLogger with TimestampLogger
   // TODO compare the results
   acct1.log("Test log message")
   acct2.log("Test log message")
