@@ -16,13 +16,18 @@ object TutorTraitRichInterface extends App {
 
   // TODO mix in Logger to SavingsAccount
   // TODO we should define log() method which was abstract
-  class SavingsAccount extends Account {
+  class SavingsAccount extends Account with Logger{
     def withdraw(amount: Double) {
       if (amount > balance) {
         // TODO uncomment this
-        // severe("Insufficient funds")
+         severe("Insufficient funds")
       }
     }
+    override def log(msg: String): Unit = {println(msg)}
   }
+
+  val acc = new SavingsAccount
+  acc.withdraw(100)
+  println(acc.log("Logger ... -> "))
 
 }
