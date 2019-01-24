@@ -30,7 +30,7 @@ object TutorTraitConcreteField extends App {
 
   class SavingsAccount extends Account with ConsoleLogger with ShortLogger {
     var interest = 0.0
-    override var balance: Double = 0.0 //- inherited from Account
+//     var balance: Double = 0.0 //- inherited from Account
     override val maxLength = 15 //- added (not inherited) from ShortLogger
     def withdraw(amount: Double) {
       if (amount > balance) log("Insufficient funds")
