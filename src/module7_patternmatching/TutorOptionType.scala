@@ -12,12 +12,17 @@ object TutorOptionType extends App {
    */
 
   // using Option in pattern matching: get returns Option
-  val scores = Map("Alice"->5, "Bob"->4)
+  val scores = Map("Alice" -> 5, "Bob" -> 4)
   // TODO use pattern matching to match scores.get("Alice")
   // TODO it should print score or print "No score" in case None
+  scores.get("Alice") match {
+    case Some(value) => println(value)
+    case None => println("No score")
+  }
 
   // otherwise, you can use getOrElse:
   // TODO use getOrElse to get Alice score or "No score" if Alice has no score
+  println(scores.getOrElse("empty", "No score"))
 
   // if you want to skip a None value, use a for comprehension:
   // TODO use for loop to print Alice score if it is present
@@ -32,8 +37,16 @@ object TutorOptionType extends App {
   // TODO define function getCapital(country: String): Option[String]
   // TODO it should match country and return "Washington" for "USA",
   // TODO Bucharest for Romania, Paris for France and None otherwise
+  def getCapital(country: String): Option[String] = country match {
+    case "USA" => Some("Washington")
+    case "Romania" => Some("Bucharest")
+    case "France" => Some("Paris")
+    case _ => None
+  }
+
+  println(getCapital("Poland").getOrElse("Poland", "undefined"))
 
   // TODO use getCapital and getOrElse to find capital
   // TODO of Russia or return "unknown" if it was not found
-
+  println(getCapital("Russia").getOrElse("unknown"))
 }
