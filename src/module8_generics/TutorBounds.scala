@@ -10,6 +10,10 @@ object TutorBounds extends App {
   // TODO create generic class Pair with upper bound Comparable[T]
   // TODO implement function smaller which will use compareTo
   // TODO to compare first and second
+//  class Pair[S <: Comparable[S]](val first: S, val second: S)
+  class Pair1[T](val first: T, val second: String) {
+    def replaceFirst[R >: T](newFirst: R) = new Pair1[R](newFirst, second)
+  }
 
   class Pair2[T <: Comparable[T]](val first: T, val second: T) {
     def smaller = if (first.compareTo(second) < 0) first else second
@@ -21,6 +25,8 @@ object TutorBounds extends App {
   // but not Pair[java.io.File], since String is a subtype
   // of Comparable[String] but File is not
   // TODO create Pair("Fred", "Brooks") and print smaller from this pair
+  val pair = new Pair2("Fred", "Brooks")
+  println(pair.smaller)
 
   // lower bound: we need to do replacement of Pair
   // TODO use upper bound in method replaceFirst so that
@@ -33,9 +39,11 @@ object TutorBounds extends App {
   val smith = new Employee("Smith")
   val johnson = new Person("Johnson")
 
-  val p = new Pair(smith, "director")
+  val p = new Pair1(smith, "director")
   // TODO uncomment, it should work with upper bound
-  //val pp = p.replaceFirst(johnson) // error: cannot replace Person by Employee
+//  val pp = p.replaceFirst(johnson) // error: cannot replace Person by Employee
+  val pp = p.replaceFirst(johnson) // error: cannot replace Person by Employee
   // TODO print pp.first.name and pp.second
+  println(pp.first.name + " : " + pp.second)
 
 }
