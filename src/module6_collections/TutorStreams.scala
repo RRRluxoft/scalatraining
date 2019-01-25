@@ -33,4 +33,5 @@ object TutorStreams extends App {
   // TODO use toStream to get stream from seq
   val stream = seq.toStream
   println(stream)
+  println(seq.toStream(2))
 }
