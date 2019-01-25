@@ -19,11 +19,19 @@ object TutorNestedStructures extends App {
   // TODO match bundle to Bundle class to retrieve name of the
   // TODO bundle and name of the first book in bunde
   // should print "Bundle Developer pack includes Scala for the Impatient"
+  bundle match {
+    case Bundle(name, _, Book(bookName, _), _*) => println(s"Bundle $name includes $bookName")
+  }
 
   // you can bind a nested value to a variable with the @ notation
   // TODO use items @ _* as a parameter to retrieve list of all items;
   // TODO print how many books contained in the bundle
   // should print "Bundle Developer pack includes Scala for the Impatient and 1 other books"
+bundle match {
+  case Bundle(name, _, book @ Book(bookName, _), books @ _*) =>
+    println(s"Bundle $name includes $bookName" +
+    s"and ${books.length -1} other books ")
+}
 
   // NOTE: case Bundle(name, _, book @ Book(bookName, _), books)
   // will match exactly 1 book to books, not array
@@ -38,11 +46,22 @@ object TutorNestedStructures extends App {
   println(price(bundle)) // 130.0
 
   // TODO print all bundles names and price in this bundle
+  bundle.items.foreach(e => e match {
+    case Bundle(name,_, books @ _*) => println(name + " " + price(e))
+    case _ =>
+  })
 
   // TODO print all book names and price in this bundle
+  bundle.items.foreach(_ match {
+    case Book(name,price) => println(name+" "+price)
+    case _ =>
+  })
 
   // TODO define nested structure of Folder and File using case classes
   // TODO define variable fs with some Folders and Files
   // TODO implement the method which calculates the total size of the FSItem
   // TODO implement the method which prints contents of the FSItem
+  sealed trait FSItem
+  case class Folder(name: String, files: Files) extends FSItem
+  case class Files(name: String) extends FSItem
 }
