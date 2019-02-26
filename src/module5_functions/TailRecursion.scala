@@ -35,7 +35,7 @@ object TailRecursion extends App {
     if (n < 1) done(1)
     else for {
 //      _ <- println("Now n = " + _)
-      x <- fuctorial(n - 1)
+      x <- factorial(n - 1)
       y <- done(n)
     } yield x.*(y)
   }
@@ -45,6 +45,6 @@ object TailRecursion extends App {
     else tailcall(fuctorial2(n -1)).flatMap(x => done(x * n))
   }
 
-  println("fuctorial : " + fuctorial(5).result)
-  println("fuctorial2 : " + fuctorial2(5).result)
+  println("factorial : " + factorial(5).result)
+  println("factorial2 : " + fuctorial2(5).result)
 }
