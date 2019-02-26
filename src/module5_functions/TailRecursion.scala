@@ -31,20 +31,20 @@ object TailRecursion extends App {
     if (xs.isEmpty) partial
     else sum3(xs.tail, xs.head + partial)
 
-  def fuctorial(n: Int): TailRec[BigInt] = {
+  def factorial(n: Int): TailRec[BigInt] = {
     if (n < 1) done(1)
     else for {
 //      _ <- println("Now n = " + _)
-      x <- fuctorial(n - 1)
+      x <- factorial(n - 1)
       y <- done(n)
     } yield x.*(y)
   }
 
-  def fuctorial2(n: Int): TailRec[BigInt] = {
+  def factorial2(n: Int): TailRec[BigInt] = {
     if (n < 1) done(1)
-    else tailcall(fuctorial2(n -1)).flatMap(x => done(x * n))
+    else tailcall(factorial2(n -1)).flatMap(x => done(x * n))
   }
 
-  println("fuctorial : " + fuctorial(5).result)
-  println("fuctorial2 : " + fuctorial2(5).result)
+  println("fuctorial : " + factorial(11).result)
+  println("fuctorial2 : " + factorial2(11).result)
 }
