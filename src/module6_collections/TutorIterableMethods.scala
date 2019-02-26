@@ -46,12 +46,12 @@ object TutorIterableMethods extends App {
 
   // collect: using partial function to map defined values
   // TODO use collect to replace all Peter by Pier, all Mary to Maria
-  println(names.collect {
-    case "Peter" => "Pier"
-    case "Mary" => "Maria"
-  })
   // TODO use syntax: case old_val=>new_val;
   // result should be List(Pier, Maria)
+  println("case old_val=>new_val; " + names.collect {
+    case "Peter"=>"Pier";
+    case "Mary"=>"Maria"
+  })
 
   println("*** recudeLeft, reduceRight, reduceLeft, reduce ***")
   // reduce and fold
