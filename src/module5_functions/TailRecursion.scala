@@ -45,6 +45,6 @@ object TailRecursion extends App {
     else tailcall(factorial2(n -1)).flatMap(x => done(x * n))
   }
 
-  println("fuctorial : " + factorial(11).result)
-  println("fuctorial2 : " + factorial2(11).result)
+  println("fuctorial : " + factorial(5).result)
+  println("fuctorial2 : " + factorial2(5).result)
 }
