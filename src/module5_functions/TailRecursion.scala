@@ -34,15 +34,17 @@ object TailRecursion extends App {
   def factorial(n: Int): TailRec[BigInt] = {
     if (n < 1) done(1)
     else for {
-//      _ <- println("Now n = " + _)
       x <- factorial(n - 1)
-      y <- done(n)
-    } yield x.*(y)
+      _ = println("Now x = " + x)
+      _ = println("Now n = " + n)
+//      y <- done(n)
+    } yield x * n
   }
 
   def fuctorial2(n: Int): TailRec[BigInt] = {
     if (n < 1) done(1)
-    else tailcall(fuctorial2(n -1)).flatMap(x => done(x * n))
+//    else tailcall(fuctorial2(n -1)).flatMap(x => done(x * n))
+    else tailcall(fuctorial2(n -1)).map(_ * n)
   }
 
   println("factorial : " + factorial(5).result)
