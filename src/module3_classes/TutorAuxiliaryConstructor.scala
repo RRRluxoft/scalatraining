@@ -1,6 +1,7 @@
 package module3_classes
 
 import scala.annotation.tailrec
+import scala.language.implicitConversions
 
 object TutorAuxiliaryConstructor extends App {
 
@@ -29,6 +30,8 @@ object TutorAuxiliaryConstructor extends App {
   val p3 = new Person("Sting", 42)
 
 
+  implicit def intToRational(x: Int): RationalNumber = new RationalNumber(x)
+
   class RationalNumber(n: Int, d: Int) {
     private val g = gcd(n, d)
 
@@ -37,6 +40,8 @@ object TutorAuxiliaryConstructor extends App {
 
     def this(n: Int) = this(n, 1)
     def this() = this(1)
+
+//    implicit def intToRational(x: Int) = new RationalNumber(x)
 
     def add(that: RationalNumber): RationalNumber = {
       new RationalNumber(numer * that.denom + denom * that.numer, denom * that.denom)
@@ -76,4 +81,9 @@ object TutorAuxiliaryConstructor extends App {
   println(rationalNumber1 + rationalNumber2)
 
   println(rNumEmpty)
+
+  println("implicit conversation")
+  val r = new RationalNumber(2, 3)
+  println(r * 2)
+  println(2 * r)
 }
