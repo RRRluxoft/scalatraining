@@ -36,9 +36,26 @@ object TutorAuxiliaryConstructor extends App {
     val denom = d / g
 
     def this(n: Int) = this(n, 1)
+    def this() = this(1)
 
     def add(that: RationalNumber): RationalNumber = {
       new RationalNumber(numer * that.denom + denom * that.numer, denom * that.denom)
+    }
+
+    def +(that: RationalNumber): RationalNumber = {
+      new RationalNumber(numer * that.denom + denom * that.numer, denom * that.denom)
+    }
+
+    def +(i: Int): RationalNumber = {
+      new RationalNumber(numer + i * denom, denom)
+    }
+
+    def *(that: RationalNumber): RationalNumber = {
+      new RationalNumber(numer * that.numer, denom * that.denom)
+    }
+
+    def *(i: Int): RationalNumber = {
+      new RationalNumber(numer * i, denom)
     }
 
     override def toString: String = (numer + "/" + denom)
@@ -51,8 +68,12 @@ object TutorAuxiliaryConstructor extends App {
 
   val rationalNumber1 = new RationalNumber(7, 14)
   val rationalNumber2 = new RationalNumber(7, 3)
+  val rNumEmpty = new RationalNumber()
 
   println(rationalNumber1)
   println(rationalNumber2)
   println(rationalNumber1 add rationalNumber2)
+  println(rationalNumber1 + rationalNumber2)
+
+  println(rNumEmpty)
 }
