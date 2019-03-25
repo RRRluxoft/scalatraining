@@ -35,8 +35,8 @@ object TutorAuxiliaryConstructor extends App {
   class RationalNumber(n: Int, d: Int) {
     private val g = gcd(n, d)
 
-    val numer = n / g
-    val denom = d / g
+    val numer: Int = n / g
+    private val denom: Int = d / g
 
     def this(n: Int) = this(n, 1)
     def this() = this(1)
@@ -63,7 +63,7 @@ object TutorAuxiliaryConstructor extends App {
       new RationalNumber(numer * i, denom)
     }
 
-    override def toString: String = (numer + "/" + denom)
+    override def toString: String = numer + "/" + denom
 
     @tailrec
     private def gcd(a: Int, b: Int): Int = {
